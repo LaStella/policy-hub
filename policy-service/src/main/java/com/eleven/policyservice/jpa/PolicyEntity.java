@@ -14,6 +14,8 @@ public class PolicyEntity {
 
     @Column(nullable = false, length = 50, unique = true)
     private String name;
+    @Column(nullable = false)
+    private String description;
     @Column(nullable = false, unique = true)
     private String policyId;
 
