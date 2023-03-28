@@ -7,6 +7,7 @@ import com.eleven.policyservice.vo.ResponsePolicy;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,12 +15,25 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/")
 public class PolicyController {
+    private Environment environment; // application.yml에서 특정한 값을 가져올때 사용합니다.
     private PolicyService policyService;
+
+    public PolicyController(Environment environment, PolicyService policyService) {
+        this.environment = environment;
+        this.policyService = policyService;
+    }
 
     @Autowired
     public PolicyController(PolicyService policyService) {
         this.policyService = policyService;
     }
+
+    @GetMapping("/status_check")
+    public String checkStatus() {
+        return String.format("It's Working in Policy Service on PORT %s",
+                environment.getProperty("local.server.port"));
+    }
+
 
     @PostMapping("/policies")
     public ResponseEntity<ResponsePolicy> createUser(@RequestBody RequestPolicy policy) {
