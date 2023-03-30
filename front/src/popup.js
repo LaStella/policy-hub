@@ -15,7 +15,7 @@ export default function Popup({btnModal,initialState, onClose}){
     
     this.render = () => {
         if(this.state){
-            const {name,explain} = this.state
+            const {name,description} = this.state
             $modal_bg.innerHTML =`
                     <div class="modal-window">
                         <div class="title">
@@ -23,7 +23,7 @@ export default function Popup({btnModal,initialState, onClose}){
                         </div>
                         <div class="close-area">X</div>
                         <div class="content">
-                            <p>${explain}</p>
+                            <p>${description}</p>
                         </div>    
                         <div class = "detail">자세히 확인하기</div>
                     </div>
