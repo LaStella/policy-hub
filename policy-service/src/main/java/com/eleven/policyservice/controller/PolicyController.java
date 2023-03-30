@@ -54,10 +54,10 @@ public class PolicyController {
 
     @GetMapping("/policies")
     public ResponseEntity<List<ResponsePolicy>> getPolicies() {
-        Iterable<PolicyEntity> userList = policyService.getPolicyByAll();
+        Iterable<PolicyEntity> policyList = policyService.getPolicyByAll();
 
         List<ResponsePolicy> result = new ArrayList<>();
-        userList.forEach(v -> {
+        policyList.forEach(v -> {
             result.add(new ModelMapper().map(v, ResponsePolicy.class));
         });
 
@@ -72,5 +72,17 @@ public class PolicyController {
         BeanUtils.copyProperties(policyEntity, returnValue);
 
         return ResponseEntity.status(HttpStatus.OK).body(returnValue);
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<ResponsePolicy>> searchPolicies(@RequestParam(value = "q") String keyword) {
+        Iterable<PolicyEntity> policyList = policyService.getPolicyByKeyword(keyword);
+
+        List<ResponsePolicy> result = new ArrayList<>();
+        policyList.forEach(v -> {
+            result.add(new ModelMapper().map(v, ResponsePolicy.class));
+        });
+
+        return ResponseEntity.status(HttpStatus.OK).body(result);
     }
 }

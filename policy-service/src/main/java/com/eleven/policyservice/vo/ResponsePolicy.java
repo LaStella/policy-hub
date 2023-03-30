@@ -10,4 +10,7 @@ public class ResponsePolicy {
     private String description;
     private String policyId;
     private Date createdAt;
+    private String tag;
+    private String logo;
+    private String link;
 }
