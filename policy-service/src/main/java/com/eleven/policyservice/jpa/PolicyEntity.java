@@ -1,8 +1,10 @@
 package com.eleven.policyservice.jpa;
 
 import lombok.Data;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Data
 @Entity
@@ -18,5 +20,7 @@ public class PolicyEntity {
     private String description;
     @Column(nullable = false, unique = true)
     private String policyId;
-
+    @Column(nullable = false, updatable = false, insertable = false)
+    @ColumnDefault(value = "CURRENT_TIMESTAMP")
+    private Date createdAt;
 }
