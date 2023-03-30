@@ -14,4 +14,10 @@ public class RequestPolicy {
     @NotNull(message = "Description cannot be null")
     @Size(min = 2, message = "Description not be less than two characters")
     private String description;
+
+    private String tag;
+
+    private String logo;
+
+    private String link;
 }

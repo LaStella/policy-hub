@@ -187,6 +187,19 @@
     margin-top: -50vh; /*height의 반만큼 음수로*/
     z-index: 1000;
 
+    all: initial;
+    width: 100vw;
+    height: 100vh;
+
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    width: 100vw; /*가로길이 설정은 여기서*/
+    margin-left: -50vw; /*width의 반만큼 음수로*/
+    height: 100vh; /*세로길이 설정은 여기서*/
+    margin-top: -50vh; /*height의 반만큼 음수로*/
+    z-index: 1000;
+
     display: flex;
     background: rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(1.5px);
@@ -283,3 +296,4 @@
     text-align: center;
     color: #000000;
 }
+

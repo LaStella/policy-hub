@@ -3,8 +3,7 @@ package com.eleven.policyservice.service;
 import com.eleven.policyservice.dto.PolicyDto;
 import com.eleven.policyservice.jpa.PolicyEntity;
 import com.eleven.policyservice.jpa.PolicyRepository;
-import org.modelmapper.ModelMapper;
-import org.modelmapper.convention.MatchingStrategies;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,9 +18,8 @@ public class PolicyServiceImpl implements PolicyService {
     public PolicyEntity createPolicy(PolicyDto policyDto) {
         policyDto.setPolicyId(UUID.randomUUID().toString());
 
-        ModelMapper mapper = new ModelMapper();
-        mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
-        PolicyEntity policyEntity = mapper.map(policyDto, PolicyEntity.class);
+        PolicyEntity policyEntity = new PolicyEntity();
+        BeanUtils.copyProperties(policyDto, policyEntity);
 
         return policyRepository.save(policyEntity);
     }
@@ -29,5 +27,15 @@ public class PolicyServiceImpl implements PolicyService {
     @Override
     public Iterable<PolicyEntity> getPolicyByAll() {
         return policyRepository.findAll();
+    }
+
+    @Override
+    public PolicyEntity getPolicyByPolicyId(String policyId) {
+        return policyRepository.findByPolicyId(policyId);
+    }
+
+    @Override
+    public Iterable<PolicyEntity> getPolicyByKeyword(String keyword) {
+        return policyRepository.findByNameContaining(keyword);
     }
 }
