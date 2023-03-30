@@ -1,4 +1,4 @@
-export default function Card({$target,initialState,openPopup}){
+export default function Card({ $target, initialState, openPopup }){
     const $container = document.createElement('div')
     $target.appendChild($container)
     $container.setAttribute("id","card_container")
@@ -13,16 +13,28 @@ export default function Card({$target,initialState,openPopup}){
     
     this.render = () => {
         $container.innerHTML =
-                this.state.map(({attribute,name,logo}) =>`
+                this.state.map(({tag,name,logo}) =>`
                 <div id='card'>
-                    <ul>
-                        <div id = 'attribute'>${attribute}</div>
+                    <ul class="card_ul">
+                        <div id = 'tag'>${tag}</div>
                         <button id="btn-modal"  type = "button">${name}</button>
-                        <div id = 'logo'>${logo}</div>
+                        <div id ='logo'>
+                            <img src="./src/svg/${logo}"></img>
+                        </div>
                     </ul>
-                </div>`).join('')          
+                </div>`).join('')
     }
     this.render()
+
+    const $card = document.getElementById("card")
+
+    // $card.addEventListener('click', (e) => {
+    //     const btnModal = e.target.closest('#btn-modal')
+    //     console.log(btnModal)
+    //     if(btnModal){
+    //         openPopup(btnModal)
+    //     }
+    // })
 
     const btnModal = document.querySelectorAll("#btn-modal")
 
