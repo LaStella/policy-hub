@@ -63,4 +63,14 @@ public class PolicyController {
 
         return ResponseEntity.status(HttpStatus.OK).body(result);
     }
+
+    @GetMapping("/policies/{policyId}")
+    public ResponseEntity<ResponsePolicy> getPolicy(@PathVariable("policyId") String policyId) {
+        PolicyEntity policyEntity = policyService.getPolicyByPolicyId(policyId);
+
+        ResponsePolicy returnValue = new ResponsePolicy();
+        BeanUtils.copyProperties(policyEntity, returnValue);
+
+        return ResponseEntity.status(HttpStatus.OK).body(returnValue);
+    }
 }

@@ -28,4 +28,9 @@ public class PolicyServiceImpl implements PolicyService {
     public Iterable<PolicyEntity> getPolicyByAll() {
         return policyRepository.findAll();
     }
+
+    @Override
+    public PolicyEntity getPolicyByPolicyId(String policyId) {
+        return policyRepository.findByPolicyId(policyId);
+    }
 }
