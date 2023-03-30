@@ -1,6 +1,7 @@
 package com.eleven.policyservice.controller;
 
 import com.eleven.policyservice.dto.PolicyDto;
+import com.eleven.policyservice.jpa.PolicyEntity;
 import com.eleven.policyservice.service.PolicyService;
 import com.eleven.policyservice.vo.RequestPolicy;
 import com.eleven.policyservice.vo.ResponsePolicy;
@@ -12,8 +13,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RestController
-@RequestMapping("/")
+@RequestMapping("/policy-service")
 public class PolicyController {
     private Environment environment; // application.yml에서 특정한 값을 가져올때 사용합니다.
     private PolicyService policyService;
@@ -46,5 +50,17 @@ public class PolicyController {
 
         // 정상적으로 생성되었음을 알리는 201코드와 정책 응답 객체를 응답엔티티에 담아 전달합니다.
         return ResponseEntity.status(HttpStatus.CREATED).body(responsePolicy);
+    }
+
+    @GetMapping("/policies")
+    public ResponseEntity<List<ResponsePolicy>> getPolicies() {
+        Iterable<PolicyEntity> userList = policyService.getPolicyByAll();
+
+        List<ResponsePolicy> result = new ArrayList<>();
+        userList.forEach(v -> {
+            result.add(new ModelMapper().map(v, ResponsePolicy.class));
+        });
+
+        return ResponseEntity.status(HttpStatus.OK).body(result);
     }
 }

@@ -1,7 +1,9 @@
 package com.eleven.policyservice.service;
 
 import com.eleven.policyservice.dto.PolicyDto;
+import com.eleven.policyservice.jpa.PolicyEntity;
 
 public interface PolicyService {
-    PolicyDto createPolicy(PolicyDto policyDto);
+    PolicyEntity createPolicy(PolicyDto policyDto);
+    Iterable<PolicyEntity> getPolicyByAll();
 }

@@ -16,15 +16,18 @@ public class PolicyServiceImpl implements PolicyService {
     PolicyRepository policyRepository;
 
     @Override
-    public PolicyDto createPolicy(PolicyDto policyDto) {
+    public PolicyEntity createPolicy(PolicyDto policyDto) {
         policyDto.setPolicyId(UUID.randomUUID().toString());
 
         ModelMapper mapper = new ModelMapper();
         mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         PolicyEntity policyEntity = mapper.map(policyDto, PolicyEntity.class);
 
-        policyRepository.save(policyEntity);
+        return policyRepository.save(policyEntity);
+    }
 
-        return null;
+    @Override
+    public Iterable<PolicyEntity> getPolicyByAll() {
+        return policyRepository.findAll();
     }
 }
