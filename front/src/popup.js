@@ -15,11 +15,7 @@ export default function Popup({btnModal,initialState, onClose}){
     
     this.render = () => {
         if(this.state){
-<<<<<<< HEAD
             const {name,description} = this.state
-=======
-            const {name,explain} = this.state
->>>>>>> ea615a3b684c237fcdaae29600d7078cfab653a2
             $modal_bg.innerHTML =`
                     <div class="modal-window">
                         <div class="title">

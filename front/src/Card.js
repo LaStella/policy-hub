@@ -4,7 +4,7 @@ export default function Card({ $target, initialState, openPopup }){
     $container.setAttribute("id","card_container")
 
     this.state = initialState;
-  
+
 
     this.setState = nextState => {
         this.state = nextState
@@ -16,11 +16,7 @@ export default function Card({ $target, initialState, openPopup }){
                 this.state.map(({tag,name,logo}) =>`
                 <div id='card'>
                     <ul class="card_ul">
-<<<<<<< HEAD
                         <div id = 'tag'>${tag}</div>
-=======
-                        <div id = 'attribute'>${attribute}</div>
->>>>>>> ea615a3b684c237fcdaae29600d7078cfab653a2
                         <button id="btn-modal"  type = "button">${name}</button>
                         <div id ='logo'>
                             <img src="./src/svg/${logo}"></img>
