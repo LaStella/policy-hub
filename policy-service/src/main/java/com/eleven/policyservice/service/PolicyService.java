@@ -7,4 +7,5 @@ public interface PolicyService {
     PolicyEntity createPolicy(PolicyDto policyDto);
     Iterable<PolicyEntity> getPolicyByAll();
     PolicyEntity getPolicyByPolicyId(String policyId);
+    Iterable<PolicyEntity> getPolicyByKeyword(String keyword);
 }

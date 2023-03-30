@@ -33,4 +33,9 @@ public class PolicyServiceImpl implements PolicyService {
     public PolicyEntity getPolicyByPolicyId(String policyId) {
         return policyRepository.findByPolicyId(policyId);
     }
+
+    @Override
+    public Iterable<PolicyEntity> getPolicyByKeyword(String keyword) {
+        return policyRepository.findByNameContaining(keyword);
+    }
 }
