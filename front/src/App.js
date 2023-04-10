@@ -5,7 +5,6 @@ import Header from "./Header.js";
 import SuggestKeywords from './SuggestKeywords.js';
 import Card from './Card.js';
 import Popup from './popup.js';
-import { dummy_data } from './main.js'
 import Footer from './footer.js';
 
 export default function App({$target, initialState}) {
