@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './header.css';
-import { Button, Spacer, Text } from '../../../components';
+import { Button } from '../../../components';
 
 const Header = ({ user, onLogin, onLogout, onCreateAccount }) => (
   <header>
     <div className="wrapper" type='horizontal'>
       <div class = "MainLogo"></div>
-      <Text size={48} strong={true}>찾는 정책이 있나요?</Text>
       <div>
         {user ? (
           <>

@@ -1,6 +1,6 @@
 import React from "react";
 
-const Spacer = ({ children, type = 'horizontal', size = 50, ...props }) => {
+const Spacer = ({ children, type = 'horizontal', size = 30, ...props }) => {
     const spacerStyle = {
         ...props.style,
         display: type === 'vertical' ? 'block' : 'inline-block',

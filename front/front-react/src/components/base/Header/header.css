@@ -14,10 +14,10 @@ svg {
 
 .MainLogo {
   background-image: url("../../../assets/MainLogo.svg");
-  margin-left: 10px;
-  margin-top: 10px;
-  height: 120px;
-  width: 300px;
+  margin-left: 0.2vw;
+  margin-top: 0.2vh;
+  height: 12vh;
+  width: 13vw;
   background-repeat: no-repeat;
 }
 

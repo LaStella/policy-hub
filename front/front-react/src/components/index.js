@@ -13,6 +13,7 @@ export { default as Spinner } from "./base/Spinner";
 export { default as Text } from "./base/Text";
 export { default as Toast } from "./base/Toast";
 export { default as Toggle } from "./base/Toggle";
+export { default as Card } from "./base/Card";
 
 // page
 export { default as NotLoginPage } from "./page/NotLoginPage"
