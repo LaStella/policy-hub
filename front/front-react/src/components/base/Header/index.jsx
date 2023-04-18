@@ -5,7 +5,7 @@ import { Button } from '../../../components';
 
 const Header = ({ user, onLogin, onLogout, onCreateAccount }) => (
   <header>
-    <div className="wrapper">
+    <div className="wrapper" type='horizontal'>
       <div class = "MainLogo"></div>
       <div>
         {user ? (
