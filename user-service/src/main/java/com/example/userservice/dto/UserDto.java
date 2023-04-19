@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 @Data
-public class RequestUserDto {
+public class UserDto {
     @NotNull(message = "Email cannot be null")
     @Size(min = 2, message = "Email not be less than two characters")
     @Email
@@ -21,11 +21,11 @@ public class RequestUserDto {
 
     @NotNull(message = "Password cannot be null")
     @Size(min = 8, message = "Password must be equal or grater than 8 characters")
-    private String pwd;
+    private String password;
     private String userId;
     private Date createdAt;
 
-    private String encryptedPwd;
+    private String encryptedPassword;
 
     private List<ResponseBookmarkDto> bookmarks;
 }
