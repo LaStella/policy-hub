@@ -1,6 +1,6 @@
 package com.example.userservice.controller;
 
-import com.example.userservice.dto.RequestUserDto;
+import com.example.userservice.dto.UserDto;
 import com.example.userservice.dto.ResponseUserDto;
 import com.example.userservice.jpa.UserEntity;
 import com.example.userservice.service.UserService;
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/user-service")
+@RequestMapping("/")
 public class UserController {
     private Environment environment;
     private UserService userService;
@@ -33,8 +33,8 @@ public class UserController {
     }
 
     @PostMapping("/users")
-    public ResponseEntity<ResponseUserDto> createUser(@RequestBody RequestUserDto requestUserDto) {
-        ResponseUserDto responseUserDto = userService.createUser(requestUserDto);
+    public ResponseEntity<ResponseUserDto> createUser(@RequestBody UserDto userDto) {
+        ResponseUserDto responseUserDto = userService.createUser(userDto);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(responseUserDto);
     }
