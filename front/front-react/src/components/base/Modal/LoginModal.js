@@ -1,15 +1,12 @@
 import Text from "../Text";
 import Modal from ".";
-import { useState } from "react";
 
-const LoginModal = () => {
-    const [visible, setVisible] = useState(false);
-
+const LoginModal = ({ visible, onClose }) => {
     return (
         <div>
-            <Modal.Base visible={visible} onClose={() => setVisible(false)}>
+            <Modal.Base visible={visible}>
                 <Text text-align="center" size={24} strong={true} block={true}>환영합니다</Text>
-                <button onClick={() => setVisible(false)}>닫기</button>
+                <button onClose={onClose}>닫기</button>
             </Modal.Base>
         </div>
     )
