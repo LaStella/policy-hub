@@ -1,5 +1,7 @@
 import styled from '@emotion/styled';
 import Image from '../Image';
+import { useState } from 'react';
+import Modal from '../Modal';
 
 const CardForm = styled.div`
     height: 30vh;
@@ -24,7 +26,7 @@ const TagStyle = styled.div`
     font-size: 0.9vw;
 `;
 
-const PolicyNameBox = styled.div`
+const PolicyNameBox = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -49,17 +51,22 @@ const LogoStyle = styled(Image)`
 `;
 
 const IndividualCard = () => {
+    const [visible, setVisible] = useState(false);
+
     return (
         <CardForm>
             <center>
                 <TagStyle>청년</TagStyle>
             </center>
             <center>
-                <PolicyNameBox>널 위한 정책이란다</PolicyNameBox>
+                <PolicyNameBox onClick={() => setVisible(true)}>널 위한 정책이란다</PolicyNameBox>
             </center>
             <center>
                 <LogoStyle src={'images/국토교통부.svg'} />
             </center>
+            <div>
+                <Modal.LoginModal visible={visible} onClose={() => setVisible(false)}></Modal.LoginModal>
+            </div>
         </CardForm>
     )
 };

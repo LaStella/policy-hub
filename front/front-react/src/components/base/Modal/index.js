@@ -1,7 +1,9 @@
 import LoginModal from "./LoginModal";
+import Base from "./Base";
 
 const Modal = {
-    LoginModal
+    LoginModal,
+    Base
 };
 
 export default Modal;

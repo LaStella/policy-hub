@@ -1,7 +1,6 @@
 import Footer from "../base/Footer";
 import Header from "../base/Header";
 import Input from "../base/Input";
-import Modal from "../base/Modal";
 import Spacer from "../base/Spacer";
 import Text from "../base/Text";
 import CardContainer from "../base/card/CardContainer";
@@ -9,9 +8,6 @@ import CardContainer from "../base/card/CardContainer";
 const NotLoginPage = () => {
     return (
         <Spacer type="vertical">
-            <div>
-                <Modal.LoginModal></Modal.LoginModal>
-            </div>
             <div>
                 <Header />
             </div>
