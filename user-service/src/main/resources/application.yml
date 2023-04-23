@@ -3,6 +3,15 @@ server:
 spring:
   application:
     name: user-service
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: true
+      path: /h2-console
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb
 
 eureka:
   instance:
@@ -12,3 +21,9 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://localhost:8761/eureka
+
+token:
+  # 1일 동안 유지되는 토큰 (60초 * 60분 * 24시간 * 1000(밀리세컨드))
+  expiration_time: 864000000
+  # 임의의 값을 사용
+  secret: user_token
