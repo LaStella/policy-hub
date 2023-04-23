@@ -78,7 +78,7 @@ public class UserServiceImpl implements UserService {
         return userDto;
     }
 
-    // 레포지터리에서 데티러를 가져와 검사합니다.
+    // 레포지터리에서 데이터를 가져와 검사합니다.
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         // 여기서 username은 RequestLogin에서 사용하는 email입니다.
