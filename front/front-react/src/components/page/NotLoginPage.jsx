@@ -1,11 +1,9 @@
-import Footer from "../base/Footer";
-import Header from "../base/Header";
-import Input from "../base/Input";
-import Spacer from "../base/Spacer";
-import Text from "../base/Text";
-import CardContainer from "../base/card/CardContainer";
+import { Footer, Header, Input, Spacer, Text, Card } from "../../components";
+import { useState } from "react";
 
 const NotLoginPage = () => {
+    const [visible, setVisible] = useState(false);
+
     return (
         <Spacer type="vertical">
             <div>
@@ -18,7 +16,7 @@ const NotLoginPage = () => {
                 <Input.MainInput placeholder="🔍︎ 검색어를 입력하세요." />
             </center>
             <center>
-                <CardContainer></CardContainer>
+                <Card.CardContainer></Card.CardContainer>
             </center>
             <center>
                 <Footer />

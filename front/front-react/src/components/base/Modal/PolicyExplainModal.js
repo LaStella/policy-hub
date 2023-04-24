@@ -1,5 +1,5 @@
 import Modal from "./index";
-import { Text, Button, Spacer } from "../../../components"
+import { Text, Button, Spacer, Toast } from "../../../components"
 import styled from "@emotion/styled";
 
 const ModalPolicyNameBox = styled.div`
@@ -30,6 +30,7 @@ const BookMarkButton = styled.button`
     border-radius: 50%;
     text-align: center;
     font-size: 2.5vw;
+    cursor: pointer;
 `
 
 const PolicyExplainModal = ({ visible, onClose, onClick, ...props}) => {
@@ -41,7 +42,7 @@ const PolicyExplainModal = ({ visible, onClose, onClick, ...props}) => {
                         <center>
                             <ModalPolicyNameBox>정책 이름</ModalPolicyNameBox>
                         </center>
-                        <BookMarkButton>⭐</BookMarkButton>
+                        <BookMarkButton onClick={() => Toast.show("즐겨찾기에 저장하였습니다.", 3000)} >⭐</BookMarkButton>
                         <Spacer size={15} type="vertical">
                             <div>
                                 <Text text-align="left" size={24} block={true}> ◇ 부가 설명</Text>

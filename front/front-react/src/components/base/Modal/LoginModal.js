@@ -4,7 +4,6 @@ import styled from "@emotion/styled";
 
 
 const LoginModal = ({ visible, onClose, onClick, ...props}) => {
-
     return (
         <div>
             <Modal.Base visible={visible} onClose={onClose}>
