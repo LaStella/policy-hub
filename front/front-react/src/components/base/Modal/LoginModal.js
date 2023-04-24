@@ -1,15 +1,19 @@
-import Text from "../Text";
-import Modal from ".";
-import { useState } from "react";
+import Modal from "./index";
+import { Text, Button, Spacer } from "../../../components"
+import styled from "@emotion/styled";
 
-const LoginModal = () => {
-    const [visible, setVisible] = useState(false);
+
+const LoginModal = ({ visible, onClose, onClick, ...props}) => {
 
     return (
         <div>
-            <Modal.Base visible={visible} onClose={() => setVisible(false)}>
-                <Text text-align="center" size={24} strong={true} block={true}>환영합니다</Text>
-                <button onClick={() => setVisible(false)}>닫기</button>
+            <Modal.Base visible={visible} onClose={onClose}>
+                <div>
+                    <Spacer>
+                        <Text text-align="center" size={24} strong={true} block={true}>환영합니다</Text>
+                        <button onClick={onClick}>닫기</button>
+                    </Spacer>
+                </div>
             </Modal.Base>
         </div>
     )

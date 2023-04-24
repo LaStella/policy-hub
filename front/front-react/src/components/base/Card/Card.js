@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
-import Image from '../Image';
+import { Button, Image, Modal, Text } from '../../../components';
 import { useState } from 'react';
-import Modal from '../Modal';
 
 const CardForm = styled.div`
     height: 30vh;
@@ -42,6 +41,7 @@ const PolicyNameBox = styled.button`
     font-weight: bold;
     line-height: 32px;
     color: #000000;
+    cursor: pointer;
 `;
 
 const LogoStyle = styled(Image)`
@@ -60,13 +60,11 @@ const IndividualCard = () => {
             </center>
             <center>
                 <PolicyNameBox onClick={() => setVisible(true)}>널 위한 정책이란다</PolicyNameBox>
+                <Modal.PolicyExplainModal visible={visible} onClose={() => setVisible(false)} onClick={() => setVisible(false)} />
             </center>
             <center>
                 <LogoStyle src={'images/국토교통부.svg'} />
             </center>
-            <div>
-                <Modal.LoginModal visible={visible} onClose={() => setVisible(false)}></Modal.LoginModal>
-            </div>
         </CardForm>
     )
 };

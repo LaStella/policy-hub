@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import { useEffect, useMemo } from "react";
 import  ReactDOM  from "react-dom";
 import { useClickAway } from "../../../hooks";
+import Spacer from "../Spacer";
 
 const BackgroundDim = styled.div`
     position: fixed;
@@ -13,8 +14,10 @@ const BackgroundDim = styled.div`
     z-index: 1000;
 `
 
-const ModalContainer = styled.div`
+const ModalContainer = styled(Spacer)`
     position: fixed;
+    width: 26.0995vw;
+    height: 35.3588vw;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -22,6 +25,8 @@ const ModalContainer = styled.div`
     background-color: white;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
     box-sizing: border-box;
+    border: 1px solid #000000;
+    border-radius: 20px;
 `
 
 const Base = ({ 
@@ -51,7 +56,7 @@ const Base = ({
     
     return ReactDOM.createPortal(
         <BackgroundDim style={{ display: visible ? "block" : "none" }}>
-            <ModalContainer ref={ref} {...props} style={{...props.style, ...containerStyle}}>
+            <ModalContainer type="vertical" ref={ref} {...props} style={{...props.style, ...containerStyle}}>
                 {children}
             </ModalContainer>
         </BackgroundDim>,
