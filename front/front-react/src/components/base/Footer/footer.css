@@ -1,0 +1,8 @@
+.MainLogo {
+  display: inline-block;
+  background-image: url("../../../assets/MainLogo.svg");
+  height: 12vh;
+  width: 13vw;
+  background-repeat: no-repeat;
+  background-size: contain;
+}

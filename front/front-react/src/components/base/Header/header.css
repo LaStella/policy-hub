@@ -19,6 +19,7 @@ svg {
   height: 12vh;
   width: 13vw;
   background-repeat: no-repeat;
+  background-size: contain;
 }
 
 h1 {
@@ -30,12 +31,18 @@ h1 {
   vertical-align: top;
 }
 
-button + button {
-  margin-left: 10px;
-}
-
 .welcome {
   color: #333;
   font-size: 14px;
   margin-right: 10px;
+}
+
+.LoginPlease {
+  font-family: 'Noto Serif Thai';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.0889vw;
+  line-height: 2.1991vw;
+
+  color: #000000;
 }

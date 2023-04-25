@@ -1,9 +1,9 @@
-import Header from "../base/Header";
-import Input from "../base/Input";
-import Spacer from "../base/Spacer";
-import Text from "../base/Text";
+import { Footer, Header, Input, Spacer, Text, Card } from "../../components";
+import { useState } from "react";
 
 const NotLoginPage = () => {
+    const [visible, setVisible] = useState(false);
+
     return (
         <Spacer type="vertical">
             <div>
@@ -13,7 +13,13 @@ const NotLoginPage = () => {
                 <Text text-align="center" size={48} strong={true} block={true}>찾는 정책이 있나요?</Text>
             </center>
             <center>
-                <Input.MainInput placeholder="🔍 검색어를 입력하세요." />
+                <Input.MainInput placeholder="🔍︎ 검색어를 입력하세요." />
+            </center>
+            <center>
+                <Card.CardContainer></Card.CardContainer>
+            </center>
+            <center>
+                <Footer />
             </center>
         </Spacer>
     )

@@ -1,6 +1,6 @@
 import CardContainer from './CardContainer';
 import CardList from './CardList';
-import IndividualCard from './IndividualCard';
+import IndividualCard from './Card';
 
 const Card = {
     CardContainer,
