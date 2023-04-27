@@ -7,7 +7,7 @@ import java.util.Date;
 
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class ResponseDto {
+public class ResponseBookmarkDto {
     private String bookmarkId;
     private String policyId;
     private String userId;

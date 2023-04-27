@@ -14,16 +14,20 @@ public class PolicyEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 50, unique = true)
-    private String name;
-    @Column(nullable = false)
-    private String description;
     @Column(nullable = false, unique = true)
     private String policyId;
-    @Column(nullable = false, updatable = false, insertable = false)
-    @ColumnDefault(value = "CURRENT_TIMESTAMP")
-    private Date createdAt;
+
+    @Column(nullable = false, length = 50, unique = true)
+    private String name;
+
+    @Column(nullable = false)
+    private String description;
+
     private String tag;
     private String logo;
     private String link;
+
+    @Column(nullable = false, updatable = false, insertable = false)
+    @ColumnDefault(value = "CURRENT_TIMESTAMP")
+    private Date createdAt;
 }

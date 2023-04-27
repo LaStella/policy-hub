@@ -3,8 +3,8 @@ package com.eleven.bookmarkservice.controller;
 import com.eleven.bookmarkservice.dto.BookmarkDto;
 import com.eleven.bookmarkservice.jpa.BookmarkEntity;
 import com.eleven.bookmarkservice.service.BookmarkService;
-import com.eleven.bookmarkservice.vo.RequestDto;
-import com.eleven.bookmarkservice.vo.ResponseDto;
+import com.eleven.bookmarkservice.vo.RequestBookmarkDto;
+import com.eleven.bookmarkservice.vo.ResponseBookmarkDto;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -34,28 +34,28 @@ public class BookmarkController {
     }
 
     @PostMapping("/{userId}/bookmarks")
-    public ResponseEntity<ResponseDto> createBookmark(@PathVariable("userId") String userId, @RequestBody RequestDto requestDto) {
+    public ResponseEntity<ResponseBookmarkDto> createBookmark(@PathVariable("userId") String userId, @RequestBody RequestBookmarkDto requestBookmarkDto) {
         BookmarkDto bookmarkDto = new BookmarkDto();
-        BeanUtils.copyProperties(requestDto, bookmarkDto);
+        BeanUtils.copyProperties(requestBookmarkDto, bookmarkDto);
         bookmarkDto.setUserId(userId);
 
         BookmarkDto createdBookmark = bookmarkService.createBookmark(bookmarkDto);
 
-        ResponseDto responseDto = new ResponseDto();
-        BeanUtils.copyProperties(createdBookmark, responseDto);
+        ResponseBookmarkDto responseBookmarkDto = new ResponseBookmarkDto();
+        BeanUtils.copyProperties(createdBookmark, responseBookmarkDto);
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(responseDto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(responseBookmarkDto);
     }
 
     @GetMapping("/{userId}/bookmarks")
-    public ResponseEntity<List<ResponseDto>> getBookmarks(@PathVariable("userId") String userId) {
+    public ResponseEntity<List<ResponseBookmarkDto>> getBookmarks(@PathVariable("userId") String userId) {
         List<BookmarkEntity> bookmarkList = bookmarkService.getBookmarksByUserId(userId);
 
-        List<ResponseDto> result = new ArrayList<>();
+        List<ResponseBookmarkDto> result = new ArrayList<>();
         bookmarkList.forEach(v -> {
-            ResponseDto responseDto = new ResponseDto();
-            BeanUtils.copyProperties(v, responseDto);
-            result.add(responseDto);
+            ResponseBookmarkDto responseBookmarkDto = new ResponseBookmarkDto();
+            BeanUtils.copyProperties(v, responseBookmarkDto);
+            result.add(responseBookmarkDto);
         });
 
         return ResponseEntity.status(HttpStatus.OK).body(result);
