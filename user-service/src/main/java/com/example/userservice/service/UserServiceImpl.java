@@ -1,5 +1,6 @@
 package com.example.userservice.service;
 
+import com.example.userservice.client.BookmarkServiceClient;
 import com.example.userservice.dto.UserDto;
 import com.example.userservice.dto.ResponseBookmarkDto;
 import com.example.userservice.dto.ResponseUserDto;
@@ -22,10 +23,15 @@ public class UserServiceImpl implements UserService {
     UserRepository userRepository;
     BCryptPasswordEncoder passwordEncoder;
 
+    BookmarkServiceClient bookmarkServiceClient;
+
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder) {
+    public UserServiceImpl(UserRepository userRepository,
+                           BCryptPasswordEncoder passwordEncoder,
+                           BookmarkServiceClient bookmarkServiceClient) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
+        this.bookmarkServiceClient = bookmarkServiceClient;
     }
 
     @Override
@@ -54,7 +60,7 @@ public class UserServiceImpl implements UserService {
         ResponseUserDto responseUserDto = new ResponseUserDto();
         BeanUtils.copyProperties(userEntity, responseUserDto);
 
-        List<ResponseBookmarkDto> bookmarks = new ArrayList<>();
+        List<ResponseBookmarkDto> bookmarks = bookmarkServiceClient.getBookmarks(userId);
         responseUserDto.setBookmarks(bookmarks);
 
         return responseUserDto;
