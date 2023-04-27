@@ -1,6 +1,7 @@
 import IndividualCard from "./Card";
 import styled from "@emotion/styled";
 import Flux from "../Flux";
+import { usePolicyContext } from "../../../context/PolicyProvider";
 
 const { Row, Col } = Flux;
 
@@ -22,18 +23,17 @@ const CategoryStyle = styled.div`
 `
 
 const CardList = () => {
+    const { policies } = usePolicyContext();
+
     return (
         <div>
             <CategoryStyle>청년 맞춤형 복지</CategoryStyle>
             <Row gutter={[0, 40]}>
-                <Col span={3}><IndividualCard /></Col>
-                <Col span={3}><IndividualCard /></Col>
-                <Col span={3}><IndividualCard /></Col>
-                <Col span={3}><IndividualCard /></Col>
-                <Col span={3}><IndividualCard /></Col>
-                <Col span={3}><IndividualCard /></Col>
-                <Col span={3}><IndividualCard /></Col>
-                <Col span={3}><IndividualCard /></Col>
+            {
+                policies.map((policy) => (
+                    <Col span={3}><IndividualCard key={policy.id} policy={policy}/></Col>
+                ))
+            }
             </Row>
         </div>
     )

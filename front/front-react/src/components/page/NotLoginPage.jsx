@@ -1,8 +1,6 @@
 import { Footer, Header, Input, Spacer, Text, Card } from "../../components";
-import { useState } from "react";
 
 const NotLoginPage = () => {
-    const [visible, setVisible] = useState(false);
 
     return (
         <Spacer type="vertical">
