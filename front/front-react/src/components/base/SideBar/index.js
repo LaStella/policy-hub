@@ -17,8 +17,9 @@ const SideBarForm = styled.div`
 
 const SideBar = () => {
     return (
-        <>
-        </>
+        <SideBarForm>
+            
+        </SideBarForm>
     )
 };
 

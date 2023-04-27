@@ -5,15 +5,11 @@ export const useUserContext = () => useContext(UserContext);
 
 const reducer = (state, action) => {
     switch (action.type) {
-        case 'INIT_USERS': {
+        case 'GET': {
             return action.payload
         }
-        case 'ADD_USER': {
+        case 'POST': {
             return [...state, action.payload]
-        }
-        case 'SEARCH_USER': {
-            const payload = action.payload;
-            return state.filter(item => item.id !== payload.id);
         }
         default: {
             console.error('Wrong type');
@@ -22,25 +18,20 @@ const reducer = (state, action) => {
     }
 }
 
-const UserProvider = ({ children, initialUsers, handleSearchUser, handleAddUser }) => {
+const UserProvider = ({ children, initialUsers, handleAddUser }) => {
     const [users, dispatch] = useReducer(reducer, initialUsers || []);
 
     useEffect(() => {
-        dispatch({ type: 'INIT_USERS', payload: initialUsers || [] });
+        dispatch({ type: 'GET', payload: initialUsers || [] });
     }, [initialUsers]);
 
     const onAddUser = useCallback(async (user) => {
         const payload = await handleAddUser(user);
-        dispatch({ type: 'ADD_USER', payload });
+        dispatch({ type: 'POST', payload });
     }, [handleAddUser])
 
-    const onSearchUser = useCallback(async (id) => {
-        const payload = await handleSearchUser(id);
-        dispatch({ type: 'SEARCH_USER', payload });
-    }, [handleSearchUser])
-
     return (
-        <UserContext.Provider value={{ users, onSearchUser, onAddUser }}>
+        <UserContext.Provider value={{ users, onAddUser }}>
             {children}
         </UserContext.Provider>
     )

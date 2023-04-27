@@ -1,3 +1,6 @@
+import { usePolicyContext } from "../../context/PolicyProvider";
+import { useForm } from "../../hooks";
+import { Input } from "../../components"
 
 const PolicyAddPage = () => {
     const { onAddPolicy } = usePolicyContext();
@@ -9,7 +12,7 @@ const PolicyAddPage = () => {
             tag: '',
             logo: "", 
             description: '',
-            policyLink: 'https://www.moel.go.kr/index.do',
+            policyLink: '',
             favor: false
         },
         onSubmit: async (values) => {
@@ -17,13 +20,23 @@ const PolicyAddPage = () => {
         },
         validate: ({ name }) => {
             const errors = {};
-            if (!name) errors.name = "정책이 없습니다."
+            if (!name) errors.name = "잘못된 입력입니다."
             return errors;
         }
     });
 
     return (
         <>
+            <Input.Base label={"name"}></Input.Base>
+            <Input.Base label={"tag"}></Input.Base>
+            <Input.Base label={"logo"}></Input.Base>
+            <Input.Base label={"description"}></Input.Base>
+            <Input.Base label={"policyLink"}></Input.Base>
+            {/* name:'',
+            tag: '',
+            logo: "", 
+            description: '',
+            policyLink: '', */}
         </>
     )
 }

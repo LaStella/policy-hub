@@ -7,7 +7,7 @@ import PolicyProvider from '../../../context/PolicyProvider';
 const CardContainer = () => {
     const initialPolicies = useAsync(async () => {
         return await axios
-        .get('http://127.0.0.1:9000/policy-service')
+        .get('http://127.0.0.1:9000/policy-service/policies')
         .then(response => response.data);
     }, []);
 
