@@ -1,5 +1,5 @@
 server:
-  port: 9000
+  port: 8000
 
 eureka:
   client:
@@ -17,8 +17,37 @@ spring:
         - id: user-service
           uri: lb://USER-SERVICE
           predicates:
+            - Path=/user-service/login
+            - Method=POST
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/user-service/users
+            - Method=POST
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+            # 유저 서비스의 요청에 대해서 필터를 적용합니다.
+            # 사용자로부터 요청받은 데이터 안에 인증정보를 검증합니다.
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
             - Path=/user-service/**
+            - Method=GET
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+            - AuthorizationHeaderFilter
         - id: policy-service
           uri: lb://POLICY-SERVICE
           predicates:
             - Path=/policy-service/**
+        - id: bookmark-service
+          uri: lb://BOOKMARK-SERVICE
+          predicates:
+            - Path=/bookmark-service/**
+token:
+  secret: user_token

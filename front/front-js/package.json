@@ -1,0 +1,19 @@
+{
+  "name": "front",
+  "version": "1.0.0",
+  "description": "![header](https://capsule-render.vercel.app/api?type=waving&color=auto&height=300&section=header&text=PolicyHub&fontSize=60&animation=scaleIn&fontAlign=70)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6"
+  },
+  "devDependencies": {
+    "@emotion/babel-plugin": "^11.10.6"
+  }
+}
