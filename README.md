@@ -1,6 +1,6 @@
 ![header](https://capsule-render.vercel.app/api?type=waving&color=auto&height=300&section=header&text=PolicyHub&fontSize=60&animation=scaleIn&fontAlign=70)
   
-# FronEnd
+# FrontEnd
 ## 2/8
 
 1. Figma 프로토타입을 기반으로 html 구조 상의
@@ -43,7 +43,7 @@
 8. 카드 컴포넌트 css 추가 ( * 전체 css 적용시 카드 css 수정이 필요해 일단 주석처리 함) 및 css 통합 
 9. searchResult 보다 card가 먼저 뜨도록 App.js 수정 
 
-# BeackENd
+# Backend
 
 ## 3/26-31
 
